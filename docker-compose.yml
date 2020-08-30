@@ -1,18 +1,22 @@
-client:
-        image: node:12.18.3
-        command: npm run docker
-        volumes:
-                - ./client:/usr/src/app
-        working_dir: /usr/src/app
-        ports:
-                - "3000:3000"
-        environment:
-                HOST: 0.0.0.0
-server:
-        image: node:12.18.3
-        command: npm run docker
-        volumes:
-                - ./server:/usr/src/app
-        working_dir: /usr/src/app
-        ports:
-                - "4000:4000"
+version: "3.7"
+services:
+        client:
+                image: node:12.18.3
+                command: npm run docker
+                volumes:
+                        - ./client:/usr/src/app
+                working_dir: /usr/src/app
+                ports:
+                        - "3000:3000"
+                environment:
+                        HOST: 0.0.0.0
+        server:
+                image: node:12.18.3
+                command: npm run docker
+                volumes:
+                        - ./server:/usr/src/app
+                working_dir: /usr/src/app
+                ports:
+                        - "4000:4000"
+                environment:
+                        PORT: 4000
